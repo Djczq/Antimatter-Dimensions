@@ -66,8 +66,10 @@ setInterval(function() {
 }, 30);
 
 setInterval(function() {
-  document.getElementById("secondSoftReset").click();
-  document.getElementById("softReset").click();
+  if (player.eightAmount.gte(getGalaxyRequirement())) {
+    maxBuyGalaxies(true);
+  }
+  maxBuyDimBoosts(true);
 }, 300);
 
 setInterval(function() {
