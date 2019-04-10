@@ -76,6 +76,7 @@ setInterval(function() {
   if (calcSacrificeBoost().gte(4)) {
     document.getElementById("sacrifice").click();
   }
+  unlockReplicantis();
 }, 1000);
 
 setInterval(function() {
