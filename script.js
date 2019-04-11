@@ -76,7 +76,9 @@ setInterval(function() {
   if (calcSacrificeBoost().gte(4)) {
     document.getElementById("sacrifice").click();
   }
-  unlockReplicantis();
+  if (gainedInfinityPoints().gte(1e140) && !player.replicanti.unl) {
+    unlockReplicantis();
+  }
 }, 1000);
 
 setInterval(function() {
