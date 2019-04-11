@@ -36,6 +36,12 @@ setInterval(function() {
     return;
   }
 
+  if (gainedInfinityPoints().gte(1) && player.infinityPoints.lte(1)) {
+    document.getElementById("bigcrunch").click();
+    incr++;
+    return;
+  }
+
   if (incr != 0 && gainedInfinityPoints().gte(mip)) {
     // document.getElementById("bigcrunch").click();
     // incr++;
