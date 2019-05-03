@@ -4,6 +4,7 @@ var incr = 0;
 var runlength = 3000;
 var nbrun = 10;
 var nbrg = 6.2;
+var nbep = "1";
 
 setInterval(function() {
 
@@ -84,6 +85,9 @@ setInterval(function() {
   }
   if (gainedInfinityPoints().gte(1e140) && !player.replicanti.unl) {
     unlockReplicantis();
+  }
+  if (gainedEternityPoints().gte(nbep)) {
+    eternity(true, true);
   }
 }, 1000);
 
