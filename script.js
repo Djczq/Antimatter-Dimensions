@@ -3,7 +3,6 @@ var mip = 0;
 var incr = 0;
 var runlength = 3000;
 var nbrun = 10;
-var nbrg = 6.2;
 var nbep = "1";
 
 setInterval(function() {
@@ -28,10 +27,10 @@ setInterval(function() {
 
   var est = Math.log(player.replicanti.chance + 1) * 1000 / player.replicanti.interval;
   var estimate = Math.max(Math.log(Number.MAX_VALUE) / est, 0) * 10;
-  var stoptime = nbrg * estimate;
+  var stoptime = (player.replicanti.gal * 1.2) * estimate;
 
   if (gainedInfinityPoints().gte(
-          player.infinityPoints.mul(Math.pow(10, 1.1 * Math.log2(player.infinityPoints.e))))) {
+          player.infinityPoints.mul(Math.pow(10, 1.3 * Math.log2(player.infinityPoints.e))))) {
     document.getElementById("bigcrunch").click();
     incr++;
     return;
