@@ -30,7 +30,7 @@ setInterval(function() {
   var stoptime = (player.replicanti.gal * 1.2) * estimate;
 
   if (gainedInfinityPoints().gte(
-          player.infinityPoints.mul(Math.pow(10, 1.3 * Math.log2(player.infinityPoints.e))))) {
+          player.lastTenRuns[0][1].mul(Math.pow(10, 1.3 * Math.log2(player.lastTenRuns[0][1].e))))) {
     document.getElementById("bigcrunch").click();
     incr++;
     return;
