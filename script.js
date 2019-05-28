@@ -1,8 +1,3 @@
-var mpeak = 0;
-var mip = 0;
-var incr = 0;
-var runlength = 3000;
-var nbrun = 10;
 var nbep = "1";
 
 setInterval(function() {
@@ -12,18 +7,7 @@ setInterval(function() {
     return;
   }
 
-  if (incr > nbrun) {
-    incr = 0;
-    mpeak = 0;
-    mip = 0;
-  }
-
   var currentIPmin = gainedInfinityPoints().dividedBy(player.thisInfinityTime / 600);
-
-  if (currentIPmin.gt(mpeak)) {
-    mip = gainedInfinityPoints();
-    mpeak = currentIPmin;
-  }
 
   var est = Math.log(player.replicanti.chance + 1) * 1000 / player.replicanti.interval;
   var estimate = Math.max(Math.log(Number.MAX_VALUE) / est, 0) * 10;
@@ -35,34 +19,17 @@ setInterval(function() {
   if (gainedInfinityPoints().gte(
           player.lastTenRuns[0][1].mul(Math.pow(10, 1.9 * Math.log2(player.lastTenRuns[0][1].e))))) {
     document.getElementById("bigcrunch").click();
-    incr++;
     return;
   }
 
   if (gainedInfinityPoints().gte(1) && player.infinityPoints.lte(1)) {
     document.getElementById("bigcrunch").click();
-    incr++;
     return;
   }
 
-  if (incr != 0 && gainedInfinityPoints().gte(mip)) {
-    // document.getElementById("bigcrunch").click();
-    // incr++;
-    // return;
-  }
-
-  if (player.replicanti.unl) {
-    if (player.thisInfinityTime > stoptime) {
-      document.getElementById("bigcrunch").click();
-      incr++;
-      return;
-    }
-  } else {
-    if (player.thisInfinityTime > runlength) {
-      document.getElementById("bigcrunch").click();
-      incr++;
-      return;
-    }
+  if (player.thisInfinityTime > stoptime) {
+    document.getElementById("bigcrunch").click();
+    return;
   }
 
 }, 300);
