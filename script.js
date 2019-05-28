@@ -27,10 +27,13 @@ setInterval(function() {
 
   var est = Math.log(player.replicanti.chance + 1) * 1000 / player.replicanti.interval;
   var estimate = Math.max(Math.log(Number.MAX_VALUE) / est, 0) * 10;
-  var stoptime = (player.replicanti.gal * 1.2) * estimate;
+  if (player.timestudy.studies.includes(133)) estimate *= 10;
+  if (player.timestudy.studies.includes(131)) estimate *= 1.5;
+  if (player.timestudy.studies.includes(62)) estimate /= 3;
+  var stoptime = (1 + player.replicanti.gal) * estimate;
 
   if (gainedInfinityPoints().gte(
-          player.lastTenRuns[0][1].mul(Math.pow(10, 1.3 * Math.log2(player.lastTenRuns[0][1].e))))) {
+          player.lastTenRuns[0][1].mul(Math.pow(10, 1.9 * Math.log2(player.lastTenRuns[0][1].e))))) {
     document.getElementById("bigcrunch").click();
     incr++;
     return;
